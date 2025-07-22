@@ -1,0 +1,28 @@
+{
+    "$schema": "./zowe.schema.json",
+    
+    "Notes": "A sample RSEAPI zowe profile. Change host, port and other values to match your env",
+
+    "profiles": {
+        "rse": {
+            "type": "rse",
+            "properties": {
+                "host": "taz-zos",  
+                "protocol": "https",
+                "port": 8195,                
+                "rejectUnauthorized": false,
+                "basePath": "rseapi"
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        }
+    },
+
+    "autoStore": true,
+
+    "defaults": {
+        "rse": "rse"        
+    }
+}

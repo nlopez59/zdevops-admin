@@ -1,0 +1,11 @@
+# ** This is a generic rule for all files (*) to convert ASCII (UTF-8) to zos-compatible (IBM-1047) EBCDIC.
+#    This includes all application source code across all (**) folders
+**   zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
+
+# DBB v3 yaml & Configs 
+conf/build/*.yaml zos-working-tree-encoding=iso8859-1 git-encoding=utf-8
+conf/build/*.conf zos-working-tree-encoding=iso8859-1 git-encoding=utf-8
+
+# ** 
+.gitattributes  zos-working-tree-encoding=iso8859-1 git-encoding=utf-8
+

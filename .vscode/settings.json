@@ -1,0 +1,18 @@
+  {
+    "workbench.startupEditor": "readme",
+    "zopeneditor.welcomePage.show": false,
+    "zopeneditor.userbuild.enabled": true,
+    "zopeneditor.zapp.generateZappOnDemand": false,
+    "zopeneditor.userbuild.alwaysShowCommands": true,
+    "zopeneditor.advancedCapabilities.enableRseApiActivationCheck": true,
+    "COMMENT1": "Change these settings path to match your end",
+    "zopeneditor.userbuild.userSettings": {
+      "dbbWorkspace": "/u/ibmuser/dbbworkspace",
+      "dbbLogDir": "/u/ibmuser/dbbworkspace",
+      "dbbHlq": "IBMUSER.VSCODE",
+      "dbbDefaultZappProfile": "dbb-userbuild"
+    },
+    "zopeneditor.zowe": {
+      "defaultCliProfile": "rse"
+    }
+  }

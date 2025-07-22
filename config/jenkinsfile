@@ -1,0 +1,62 @@
+// Sample Jenkinsfile using pGH, ssh and a zDT Agent (Nlopez)
+// iGH tap=XXc5748804da508e6cb3ad7f077a82478b4e162151XX=tap
+// for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
+ 
+// change these values to match your configuration
+def myAgent  = 'myZOS-Agent'
+def repo = 'git@bitbucket.org:nlopez59/bb-poc-workspace.git'
+
+def dbbbuild ='dbb -hlq ibmuser.pipeline impact'
+def appworkspace = 'myapp'
+def appname = 'source'
+
+# Add Wd Ansible setup
+# 
+
+// no changes required to this section 
+pipeline {
+    agent  { label myAgent } 
+    options { skipDefaultCheckout(true) }
+    stages {
+        stage('Diags') {
+            steps {
+                println '** Diagnostics on USS (pwd, uname, df, env, git ver)...'     
+                script {
+                    sh 'pwd'
+                    sh 'uname -a'
+                    sh 'df . -P'
+                    sh 'env | sort *'
+                    sh 'git --version ' 
+                }
+            }          
+        }  
+        stage('Clone') {
+            steps {
+                println '** Cloning on USS ...'     
+                script {
+                    sh 'rm -rf *'
+                    sh 'git clone ' + repo 
+                    sh 'cd ' + appworkspace  + '; git log --graph --oneline --decorate -n 3'
+                }
+            }          
+        }  
+
+        stage('Build') {
+            steps {
+                println  '** Building one pgm with DBB ...'                  
+                script {
+                    sh 'groovyz ' + dbbbuild + ' -w ${WORKSPACE}/'+appworkspace  + ' -a ' + appname + ' -o ${WORKSPACE}/'+appworkspace + ' -h ' + env.USER + ' source/cobol/asample.cbl'
+                }
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                println  '** TBD. Package and Publish to ...'                  
+                # script {
+                #     #sh 'tbd'
+                # }
+            }
+        }
+    }    
+}

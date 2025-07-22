@@ -1,0 +1,41 @@
+name: "sample-app"
+description: | 
+  This is a sample IBM Z Open Editor zapp.yaml for DBB V3. 
+  
+
+version: "3.0.0"
+author:
+  name: "ANY_NAME"
+
+
+profiles:
+- name: "dbb-userbuild"
+  type: "dbb"
+  settings:    
+    # setup the DBB env vars in your USS .profile See config/.profile   
+    command: ". ?/u/yourHome/.profile; dbb build "    
+    
+
+    lifecycle: "user"
+    lifecycleArgs:
+    - "--hlq ${zopeneditor.userbuild.userSettings.dbbHlq}"
+    
+    additionalDependencies:
+    - "dbb-app.yaml"
+    
+
+    logFilePatterns:
+    - "${buildFile.basename}-*.log"
+    - "BuildReport.H*"
+
+
+propertyGroups:
+- name: cobol-copybooks
+  language: cobol
+  libraries:
+    - name: syslib
+      type: local
+      locations:
+        - "**/copybook"
+        - "**/bms"
+    
