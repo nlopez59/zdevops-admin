@@ -24,7 +24,7 @@ Configure VS Code with DBB, Zowe, and Open Editor to enable mainframe developers
 * Install VS Code and the Git extension
 * Z DevOps Admin - Clone this repo on their desktop.
 
->This repo serves as a baseline for the Z DevOps Admin to design, test and save under the enterprise Git server.  This includes both __administrative__ configuration files and a small cobol app for unit testing.  On the other hand, Application repos are managed by development teams and do not include  administrative files.   Their repo will look like the sample included in the DBB installation folder "/usr/lpp/IBM/dbb/samples/MortgageApplication". 
+>This repo serves as a baseline for the Z DevOps Admin to design, test and save under the enterprise Git server.  This includes both __administrative__ configuration files and a small cobol app for unit testing.  On the other hand, application repos are managed by development teams and do not include administrative files.   Their repo will look like the sample included in the DBB installation folder "/usr/lpp/IBM/dbb/samples/MortgageApplication". 
 
 ---
 
@@ -74,9 +74,9 @@ Edit [`settings.json`](.vscode/settings.json):
 
 
 ### 5. Verify a DBB User Build 
-* From VS Code, Commit all changes to this repo and push it to git 
+* From VS Code, Commit all changes to this repo and push it to your git server
 * On zOS/USS, SSH into your zOS host: 
-  * setup Git access from USS to Git.  Generate SSH Keys for the Z DevOps Admin acct and add the public key to their Git Acct.  
+  * setup Git access from USS to your Git Acct.  Generate SSH Keys for the Z DevOps Admin acct and add the public key to their Git Acct.  
   * clone this repo under Z DevOps Admins home dir
   
 * Open the /source/cobol/asample.cbl  file 
