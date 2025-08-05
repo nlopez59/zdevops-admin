@@ -8,7 +8,7 @@ def myAgent  = 'taz-zos-agent'
 def repo = 'https://github.com/nlopez59/zdevops-admin.git'
  
  
-def appworkspace = 'poc-workspace'
+def appworkspace = 'zdevops-admin'
 def appname = 'source'
 
 
@@ -36,7 +36,7 @@ pipeline {
                 println  '** Building with DBB  ...'                  
                 script {
  
-                    sh 'cd ' + appworkspace + '; dbb -DBB_DAEMON_PORT 8180 build file --hlq ibmuser.jenkins --encoding UTF-8 poc-app/cobol/asample.cbl' 
+                    sh 'cd ' + appworkspace + '; dbb -DBB_DAEMON_PORT 8180 build file --hlq ibmuser.jenkins --encoding UTF-8 source/cobol/asample.cbl' 
 
                 }
             }
