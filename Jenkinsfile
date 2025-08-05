@@ -5,7 +5,7 @@
 // sample scripts are @ '/u/ibmuser/waziDBB/dbb-v2/dbb-zappbuild/scripts'
 
 def myAgent  = 'taz-zos-agent'
-def repo = 'git@github.com:nlopez1-ibm/zdevops-admin.git'
+def repo = 'https://github.com/nlopez59/zdevops-admin.git'
  
  
 def appworkspace = 'poc-workspace'
