@@ -19,6 +19,18 @@
                 "password"
             ]
         },
+         "taz-zos-ssh": {
+            "type": "ssh",
+            "properties": {
+                "host": "taz-zos",
+                "port": 2022,
+                "user": "ibmuser",
+                "privateKey": "C:/Users/NelsonLopez1/.ssh/taz-key"
+            },
+            "secure": [
+                "user"
+            ]
+        },
     },
 
     "autoStore": true,

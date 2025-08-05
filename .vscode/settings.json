@@ -13,6 +13,8 @@
       "dbbDefaultZappProfile": "dbb-userbuild"
     },
     "zopeneditor.zowe": {
-      "defaultCliProfile": "rse"
+      "defaultCliProfile": "taz-zos-zosmf",
+      "defaultSshProfile": "taz-zos-ssh"
+           
     }
   }

@@ -13,7 +13,7 @@ profiles:
   type: "dbb"
   settings:    
     # setup the DBB env vars in your USS .profile See config/.profile   
-    command: ". ?/u/yourHome/.profile; dbb build "    
+    command: ". /etc/profile; dbb -DBB_DAEMON_PORT 8180 build "    
     
 
     lifecycle: "user"

@@ -5,5 +5,5 @@
        WORKING-STORAGE SECTION.   
        COPY VARS.                                           
        PROCEDURE DIVISION.                                            
-           DISPLAY 'asample: test pgm v4a'.
+           DISPLAY 'asample: test pgm v4-A'.
            STOP RUN.
