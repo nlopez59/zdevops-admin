@@ -25,7 +25,6 @@ pipeline {
                     sh 'rm -rf *'
                     sh 'git clone ' + repo 
                     sh 'cd ' + appworkspace  + '; git log --graph --oneline --decorate -n 3'
-                    sh 'cd ' + appworkspace  + '; git clone  -b main ' + Common 
                     
                 }
             }          
