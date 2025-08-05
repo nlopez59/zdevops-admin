@@ -35,7 +35,7 @@ pipeline {
                 println  '** Building with DBB  ...'                  
                 script {
  
-                    sh 'cd ' + appworkspace + '; dbb -DBB_DAEMON_PORT 8180 build file --hlq ibmuser.jenkins --encoding UTF-8 source/cobol/asample.cbl' 
+                    sh 'cd ' + appworkspace + '; dbb  build file --hlq ibmuser.jenkins --encoding UTF-8 source/cobol/asample.cbl' 
 
                 }
             }
