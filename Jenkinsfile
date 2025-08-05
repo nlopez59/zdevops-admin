@@ -35,7 +35,7 @@ pipeline {
                 println  '** Building with DBB  ...'                  
                 script {
  
-                    sh 'cd ' + appworkspace + '; set; dbb build file --hlq ibmuser.jenkins source/cobol/asample.cbl' 
+                    sh 'cd ' + appworkspace + '; unset _TAG_REDIR_ERR  _TAG_REDIR_OUT ; set; dbb build file --hlq ibmuser.jenkins source/cobol/asample.cbl' 
 
                 }
             }
