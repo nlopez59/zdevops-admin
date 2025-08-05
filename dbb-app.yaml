@@ -10,6 +10,13 @@ version: 1.0.0
 application:
   name: source 
   tasks:
+  
+    - task: Cobol
+      variables:     
+        # Append  Compiler options 
+        # When this var is defined, it enables the compiler 'test' in Cobol.yaml. This is needed for the IBM Debugger. 
+        - name: debug      
+          value: true 
 
     # Variable overrides for the ImpactAnalysis task
     - task: ImpactAnalysis

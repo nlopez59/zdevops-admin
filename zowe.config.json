@@ -31,7 +31,55 @@
                 "user"
             ]
         },
+        
+        "zOpenDebug": {
+            "type": "zOpenDebug",
+            "properties": {
+                "host": "taz-zos",
+                "user": "ibmuser",
+                "COMMENT1": "DPS (Profile service) port connect to the EQAPROF STC",
+                "dpsPort": 8192,
+                "dpsContextRoot": "api/v1",
+                "dpsSecured": true,
+                "COMMENT2": "RDS (Remote Client service) port connect to the EQARMTD STC. SECURED",
+                "rdsPort": 8194,
+                "rdsSecured": true,
+                "COMMENT3": "Basic racf userid/password login credentials",
+                "authenticationType": "basic",
+                "uuid": "e91d29b6-959f-4e17-b23d-4394fc8c0a7b"
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+
+        }
     },
+    
+        "zOpenDebug": {
+            "type": "zOpenDebug",
+            "properties": {
+                "host": "taz-zos",
+                "userid": "ibmuser",
+                "password": "jeep0922",
+                "COMMENT1": "DPS (Profile service) port connect to the EQAPROF STC",
+                "dpsPort": 8192,
+                "dpsContextRoot": "api/v1",
+                "dpsSecured": true,
+                "COMMENT2": "RDS (Remote Client service) port connect to the EQARMTD STC. SECURED",
+                "rdsPort": 8194,
+                "rdsSecured": true,
+                "COMMENT3": "Basic racf userid/password login credentials",
+                "authenticationType": "Basic",
+                "protocol": "https",
+                "rejectUnauthorized": false
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        },
+
 
     "autoStore": true,
 
@@ -40,3 +88,5 @@
         
     }
 }
+
+
