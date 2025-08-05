@@ -35,7 +35,10 @@ pipeline {
                 println  '** Building with DBB  ...'                  
                 script {
  
-                    sh 'cd ' + appworkspace + '; unset _TAG_REDIR_ERR  _TAG_REDIR_OUT ; set; dbb build file --hlq ibmuser.jenkins source/cobol/asample.cbl' 
+                    sh 'cd ' + appworkspace + '; dbb build file --hlq ibmuser.jenkins source/cobol/asample.cbl; for f in *.log; do iconv -f IBM-1047 -t UTF-8 "$f" > "${f}.utf8"; done' 
+
+
+
 
                 }
             }
@@ -47,7 +50,7 @@ pipeline {
     post {
             always {
                 echo 'Saving Logs ...'
-                archiveArtifacts artifacts: '**/*.log', fingerprint: false                
+                archiveArtifacts artifacts: '**/*.log.utf8', fingerprint: false                
                 }
     }        
 }
