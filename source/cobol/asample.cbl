@@ -5,5 +5,5 @@
        WORKING-STORAGE SECTION.   
        COPY VARS.                                           
        PROCEDURE DIVISION.                                            
-           DISPLAY 'asample: test pgm Bad Bunny'.
+           DISPLAY 'asample: test v2'.
            STOP RUN.
