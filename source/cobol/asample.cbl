@@ -5,5 +5,5 @@
        WORKING-STORAGE SECTION.   
        COPY VARS.                                           
        PROCEDURE DIVISION.                                            
-           DISPLAY 'asample: test v2'.
+           DISPLAY 'asample: test v55'.
            STOP RUN.
