@@ -12,9 +12,12 @@ profiles:
 - name: "dbb-userbuild"
   type: "dbb"
   settings:    
-    # setup the DBB env vars in your USS .profile See config/.profile   
-    command: ". /etc/profile; dbb -DBB_DAEMON_PORT 8180 build "    
-    
+    # assumes $ZDEVOPS_HOME  is defined in /etc/profile  and set to /u/?/zdevops
+    #         $DBB_BUILD = $ZDEVOPS_HOME/build   
+    command: ". /etc/profile;   \
+              mkdir -p conf; \
+              cp -r conf/* $ZDEVOPS_HOME/conf; \                
+              dbb  -DBB_DAEMON_PORT 8180 --verbose  build "
 
     lifecycle: "user"
     lifecycleArgs:
@@ -25,8 +28,8 @@ profiles:
     
 
     logFilePatterns:
-    - "${buildFile.basename}-*.log"
-    - "BuildReport.H*"
+    - "**/logs/*.log"   
+    
 
 
 propertyGroups:
@@ -37,5 +40,5 @@ propertyGroups:
       type: local
       locations:
         - "**/copybook"
-        - "**/bms"
+      
     

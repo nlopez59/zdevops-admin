@@ -21,8 +21,7 @@
                                 "ssh",
                                 "rse",
                                 "zOpenDebug",
-                                "base",
-                                "cics"
+                                "base"
                             ]
                         },
                         "properties": {
@@ -485,74 +484,6 @@
                                     }
                                 }
                             }
-                        },
-                        {
-                            "if": {
-                                "properties": {
-                                    "type": {
-                                        "const": "cics"
-                                    }
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "properties": {
-                                        "type": "object",
-                                        "title": "CICS Profile",
-                                        "description": "A cics profile is required to issue commands in the cics command group that interact with CICS regions. The cics profile contains your host, port, user name, and password for the IBM CICS management client interface (CMCI) server of your choice.",
-                                        "properties": {
-                                            "host": {
-                                                "type": "string",
-                                                "description": "The CMCI server host name"
-                                            },
-                                            "port": {
-                                                "type": "number",
-                                                "description": "The CMCI server port",
-                                                "default": 1490
-                                            },
-                                            "user": {
-                                                "type": "string",
-                                                "description": "Your username to connect to CICS"
-                                            },
-                                            "password": {
-                                                "type": "string",
-                                                "description": "Your password to connect to CICS"
-                                            },
-                                            "regionName": {
-                                                "type": "string",
-                                                "description": "The name of the CICS region name to interact with"
-                                            },
-                                            "cicsPlex": {
-                                                "type": "string",
-                                                "description": "The name of the CICSPlex to interact with"
-                                            },
-                                            "rejectUnauthorized": {
-                                                "type": "boolean",
-                                                "description": "Reject self-signed certificates.",
-                                                "default": true
-                                            },
-                                            "protocol": {
-                                                "type": "string",
-                                                "description": "Specifies CMCI protocol (http or https).",
-                                                "default": "https",
-                                                "enum": [
-                                                    "http",
-                                                    "https"
-                                                ]
-                                            }
-                                        },
-                                        "required": []
-                                    },
-                                    "secure": {
-                                        "items": {
-                                            "enum": [
-                                                "user",
-                                                "password"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
                         }
                     ]
                 }
@@ -584,10 +515,6 @@
                 },
                 "base": {
                     "description": "Default base profile",
-                    "type": "string"
-                },
-                "cics": {
-                    "description": "Default cics profile",
                     "type": "string"
                 }
             }

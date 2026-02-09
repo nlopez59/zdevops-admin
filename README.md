@@ -1,4 +1,23 @@
-### 🛠️ DBB/VS Code Quick Start Notes (IBM: July 2025)
+### 🛠️ DBB/VS Code Quick Start Notes (IBM: July 2025  - ADOv2)
+
+
+First step 
+- Clone this on VS Code 
+- Create a new repo on your corporate server called zdevops 
+- Paste all the file here into you zdevops repo - EXCEPT this repos .git dir
+- Conf zowe port and host 
+- set you s code setting for openEditor 
+- define an env var 
+    - export ZDEVOPS=/u/?/zdevops
+    
+
+
+Start testing  !!!
+
+
+
+
+Below are old notes that are under revision   - disregard for now 
 
 **Purpose:**
 Configure VS Code with DBB, Zowe, and Open Editor to enable mainframe developers to build and test applications using modern DevOps tools.
@@ -37,8 +56,6 @@ Edit [`zowe.config.json`](zowe.config.json):
 * Follow the inline comments and guidance in the sample file.
 * Test Zowe access:
 
-  * Open your USS home directory.
-  * Create a folder named `dbbworkspace`.
 
 ### 2. Import DBB Sample Configuration Files
 
@@ -109,8 +126,6 @@ As the Z DevOps Admin. set up an application repo for developers to test with.  
       "defaultCliProfile": "rse"       
       }
 ```
-* Create a `dbbworkspace` directory in your USS home.
-
 
 * Checkout a new Git feature branch.
 * Modify a COBOL program.
@@ -121,8 +136,6 @@ As the Z DevOps Admin. set up an application repo for developers to test with.  
 * The compiler and linkedit sysout should be in your local /logs folder. 
 * A simple batch program can be tested with JCL using the steplib DSN of your DBB HLQ and the LLQ .load
 * In VS Code, use Git to Commit and Push your branch to prepare for a Pull Request and Pipeline. 
-
-[Example Dev Flow](https://youtu.be/VvZ5Gg3B2xA)
 
 
 ---

@@ -1,92 +1,38 @@
 {
     "$schema": "./zowe.schema.json",
-    
-    "Notes": "A sample RSEAPI zowe profile. Change host, port and other values to match your env",
-
+    "Nelsons-Notes": [
+        "- Use this to connect to zOS from VS Code using the RSEAPI (STC) for user IBMUSER and your password",                
+        "- All ports and security have been pre-configured",
+        "- Just change the IP of the HOST to your TAZ/ODE Host IP"
+    ],
     "profiles": {
-    
-        
-        "taz-zos-zosmf": {
-            "type": "zosmf",
+        "rse": {
+            "type": "rse",
             "properties": {
-                "host": "taz-zos",
-                "port": 10443,
+                "port": 8195
+            } 
+        },
+        
+        "project_base": {
+            "type": "base",
+            "properties": {
                 "protocol": "https",
-                "rejectUnauthorized": false
-            },
-            "secure": [
-                "user",
-                "password"
-            ]
-        },
-         "taz-zos-ssh": {
-            "type": "ssh",
-            "properties": {
-                "host": "taz-zos",
-                "port": 2022,
-                "user": "ibmuser",
-                "privateKey": "C:/Users/NelsonLopez1/.ssh/taz-key"
-            },
-            "secure": [
-                "user"
-            ]
-        },
-        
-        "zOpenDebug": {
-            "type": "zOpenDebug",
-            "properties": {
-                "host": "taz-zos",
-                "user": "ibmuser",
-                "COMMENT1": "DPS (Profile service) port connect to the EQAPROF STC",
-                "dpsPort": 8192,
-                "dpsContextRoot": "api/v1",
-                "dpsSecured": true,
-                "COMMENT2": "RDS (Remote Client service) port connect to the EQARMTD STC. SECURED",
-                "rdsPort": 8194,
-                "rdsSecured": true,
-                "COMMENT3": "Basic racf userid/password login credentials",
-                "authenticationType": "basic",
-                "uuid": "e91d29b6-959f-4e17-b23d-4394fc8c0a7b"
-            },
-            "secure": [
-                "user",
-                "password"
-            ]
+                "rejectUnauthorized": false,
+                "basePath": "rseapi",
 
+                "COMMENT4": "Change the HOST IP below to your FRYE VM's public IP ",
+                "host-baseline": "9.37.212.26",
+                "host": "9.60.140.251"
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
         }
     },
-    
-        "zOpenDebug": {
-            "type": "zOpenDebug",
-            "properties": {
-                "host": "taz-zos",
-                "userid": "ibmuser",
-                "password": "jeep0922",
-                "COMMENT1": "DPS (Profile service) port connect to the EQAPROF STC",
-                "dpsPort": 8192,
-                "dpsContextRoot": "api/v1",
-                "dpsSecured": true,
-                "COMMENT2": "RDS (Remote Client service) port connect to the EQARMTD STC. SECURED",
-                "rdsPort": 8194,
-                "rdsSecured": true,
-                "COMMENT3": "Basic racf userid/password login credentials",
-                "authenticationType": "Basic",
-                "protocol": "https",
-                "rejectUnauthorized": false
-            },
-            "secure": [
-                "user",
-                "password"
-            ]
-        },
-
-
     "autoStore": true,
-
-    "defaults": { 
-        "zosmf": "taz-zos-zosmf"
-        
+    "defaults": {
+        "base": "project_base",
+        "rse": "rse"
     }
 }
-
-
