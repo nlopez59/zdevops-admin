@@ -1,17 +1,20 @@
+
+wip dont use see the tz-demo repo for xtern ref 
+https://github.com/nlopez59/IBM-TZ-Demo
+
+
+
 ### 🛠️ DBB/VS Code Quick Start Notes (IBM: July 2025  - ADOv2)
 
 
 First step 
 - Clone this on VS Code 
 - Create a new repo on your corporate server called zdevops 
-- Paste all the file here into you zdevops repo - EXCEPT this repos .git dir
+- Paste all the files in this repo into your zdevops repo - EXCEPT THE .git folder
 - Conf zowe port and host 
-- set you s code setting for openEditor 
-- define an env var 
-    - export ZDEVOPS=/u/?/zdevops
+- set you vs code settings for openEditor 
+- define an env var see sample in conf/etc/profile
     
-
-
 Start testing  !!!
 
 

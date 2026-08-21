@@ -1,0 +1,51 @@
+# This is a sample zOS USS .profile for a DevOps POC (IBM)  generic model  
+# Review and update based on your smp/e install paths and version 
+
+# Path of the zdevops repo cloned in USS
+   . /etc/profile                              # Init with the system wide profile               
+
+   export ZDEVOPS_HOME=/u/???/zdevops          # supply the service acct or user home dir of the zdevops Admin repo 
+   export zScripts=$ZDEVOPS_HOME/scripts             
+    
+#Java 11 or better 
+   export JAVA_HOME=/usr/lpp/java/java11/current_64
+   export PATH=$JAVA_HOME/bin:$PATH
+
+# Wazi-deploy  v3+
+    #ZOAU
+    export ZOAU_HOME=/usr/lpp/IBM/zoautil
+    export PATH=$ZOAU_HOME/bin:$PATH
+    export LIBPATH=$ZOAU_HOME/lib:$LIBPATH
+
+    #Python
+    export PATH=/usr/lpp/IBM/cyp/v3r11/pyz/bin:$PATH
+    export LIBPATH=/usr/lpp/IBM/cyp/v3r11/pyz/lib:$LIBPATH
+
+# DBB  v3+
+    export DBB_HOME=/usr/lpp/IBM/dbb  
+
+    export DBB_CONF=$ZDEVOPS_HOME/conf/build
+    export DBB_BUILD=$ZDEVOPS_HOME/conf/build
+
+    export PATH=$DBB_HOME/bin:$PATH
+    export LIBPATH=$LIBPATH:$DBB_HOME/lib
+    export CLASSPATH=$ZDEVOPS_HOME/build/logging:$CLASSPATH
+
+    # add db2 classes for DBB metadata schema - DEFER during PoC
+    ## export CLASSPATH=/usr/lpp/db2d10/jdbc/classes/db2jcc4.jar:$CLASSPATH
+    ## export CLASSPATH=/usr/lpp/db2d10/jdbc/classes/db2jcc_license_cisuz.jar:$CLASSPATH
+   
+
+# IBM Open Git 
+    export PATH=$PATH:/usr/lpp/IBM/foz/v1r1/bin
+    export LIBPATH=$LIBPATH:/usr/lpp/IBM/foz/v1r1/lib
+    export MANPATH=$MANPATH:/usr/lpp/IBM/foz/v1r1/share
+
+#Common Vars:
+    # common encoding
+    export _BPXK_AUTOCVT=ON
+    export _CEE_RUNOPTS='FILETAG(AUTOCVT,AUTOTAG) POSIX(ON)'
+    export _TAG_REDIR_ERR=txt
+    export _TAG_REDIR_IN=txt
+    export _TAG_REDIR_OUT=txt
+    export PATH=.:/usr/bin:/bin:/usr/sbin:$PATH # This is a sample zOS USS .profile for a DevOps POC (IBM)

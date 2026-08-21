@@ -12,22 +12,40 @@ profiles:
 - name: "dbb-userbuild"
   type: "dbb"
   settings:    
-    # assumes $ZDEVOPS_HOME  is defined in /etc/profile  and set to /u/?/zdevops
-    #         $DBB_BUILD = $ZDEVOPS_HOME/build   
-    command: ". /etc/profile;   \
-              mkdir -p conf; \
-              cp -r conf/* $ZDEVOPS_HOME/conf; \                
-              dbb  -DBB_DAEMON_PORT 8180 --verbose  build "
+    # Assumes $ZDEVOPS_HOME env var is defined in /etc/profile  or .profile 
+    # And the sample zdevops admin repo is pre-cloned into the test acct's home  
+    # A test acct can be a service acct or a user acct on USS with an OMVS and TSO segment. 
+
+    # The dbb build command below is a special form used by DevOps admins to quickly refresh (cp) config files for testing
+    # Its used when the "IBM User Build with Full Upload" option is selected 
+    # change the source path of the profile that defines dbb env vars  like /etc/profile or .profile 
+
+    command: ". /etc/profile; 
+            cp -r conf/build/* $DBB_BUILD/conf/build;
+            dbb   --verbose  build "
 
     lifecycle: "user"
+
     lifecycleArgs:
+    # The current user's personal vs code settings.json that defines their HLQ on zOS for DBB Builds - see sample in .vscode/settings.json 
     - "--hlq ${zopeneditor.userbuild.userSettings.dbbHlq}"
     
+    
+    # File Uploads: 
+    # On a first time build, the 'additionalDependencies' rule copies all files in the defined paths
+    # You can also use the full upload option to refresh USS with local changes for testing purposes 
     additionalDependencies:
+
+    # The application's dbb build options 
     - "dbb-app.yaml"
     
+    # The local Admin folder with DBB and other config files to be copied to the #ZDEVOPS_HOME/conf dir 
+    - "conf/build/*"
 
+
+    # File Downloads: 
     logFilePatterns:
+    # DBB build logs like compiler and linkedit sysprint 
     - "**/logs/*.log"   
     
 
