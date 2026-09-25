@@ -6,10 +6,10 @@
         "- Just change the IP of the HOST to your TAZ/ODE Host IP"
     ],
     "profiles": {
-        "rse": {
+        "zos": {
             "type": "rse",
             "properties": {
-                "port": 8195
+                "port": <RSEAPI_PORT>
             } 
         },
         
@@ -18,11 +18,8 @@
             "properties": {
                 "protocol": "https",
                 "rejectUnauthorized": false,
-                "basePath": "rseapi",
-
-                "COMMENT4": "Change the HOST IP below to your FRYE VM's public IP ",
-                "host-baseline": "9.37.212.26",
-                "host": "9.60.140.251"
+                "basePath": "rseapi",                                
+                "host": "<ZOS HOST IP or DNS>"
             },
             "secure": [
                 "user",

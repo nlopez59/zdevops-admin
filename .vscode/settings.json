@@ -1,25 +1,17 @@
-/* Notes: This is a sample vsCode settings.json snippet for developers to use when setting-up vsCode IBM Open Editor with DBB.
- 
-    zopeneditor.userbuild.userSettings:
-        - dbbWorkspace:   The DBB workspace folder under the users USS Home  
-        - dbbApp:         A folder under the workspace that has the application source file   
-        - dbbHlq:         A HLQ used by DBB to allocate  PDSs during a User Build. DBB provides the LLQ like LOAD, COPYLIB, DBRM...
-        - dbbLogDir:      A path under the users USS home to store temporary dbb build logs
 
-    zopeneditor.zowe:
-        - defaultCliProfile:    - The zowe profile used to connect to zOS.  This can be under zOSMF or RSEAPI
-        - defaultSshCliProfile: - When using zOSMF, an SSH profile is also required. 
 
-*/        
-
-"zopeneditor.userbuild.userSettings": {
-      "dbbHlq": "USER?.VSCODE?",  
-      "dbbWorkspace": "/u/user?/vsCode_workspace",   
-      "dbbApp": "source",        
-      "dbbLogDir": "/u/user?/dbblogs" 
+{
+    "zopeneditor.userbuild.userSettings": {
+        "dbbWorkspace": "<USS_HOME>/_vsCodeBuilds",
+        "dbbLogDir": "<USS_HOME>/_vsCodeBuilds",
+        "dbbHlq": "<MVS_HLQ>.VSCODE",
+        "dbbDefaultZappProfile": "dbb-userbuild"
     },
-"zopeneditor.zowe": {
-      "defaultCliProfile": "zowe",
-      "defaultSshCliProfile": "ssh"
-    },    
+
+    "zopeneditor.zowe": {
+        "defaultCliProfile": "zos"
+    }
+
+}
+		
 
