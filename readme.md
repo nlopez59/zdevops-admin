@@ -70,15 +70,16 @@ _On VS Code_:
         #  value: 
     ```
 
-Your ready to use test a DBB User Build VS provided in this repo's source dir.     
+Your ready to for your first test. 
 
 
 ## User Build Basics  
 * Edit the sample [source/sample.cbl](source/cobol/sample.cbl) cobol program using the VS Code/IBM Z Open Editor.
-* Right click on the source code and select "Run IBM User Build with full load". Subsequent builds can use the "Run IBM User Build" option.
+* Right click on the source code and select "Run IBM User Build with full load". For subsequent builds, use the faster "Run IBM User Build" option.
 * View the build output logs in this project's `logs` folder.
-* if the build was `Clean`, edit the sample test JCL [`source/jcl/sample.jcl`](source/jcl/sample.jcl#L4) and change the steplib to the $dbbHLQ defined in `.settings.json` (see above). Right click to `Submit` the job.  
-* A popup, lower right, will help navigate you to the Jobs JES output in Zowe Explorer.
+* For a `Clean` DBB build, edit the sample test JCL [`source/jcl/sample.jcl`](source/jcl/sample.jcl#L4) and change the steplib to the $dbbHLQ defined in `.settings.json` (see above). 
+* Right click the JCL to `Submit` the job.  
+* A popup, lower right, will help navigate you to the Job's JES output in Zowe Explorer.
 
 
 For additional information, contact your IBM zDevOps representative.
