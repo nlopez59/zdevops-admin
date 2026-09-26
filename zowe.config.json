@@ -9,7 +9,7 @@
         "zos": {
             "type": "rse",
             "properties": {
-                "port": <RSEAPI_PORT>
+                "port": <RSEAPI_PORT> 
             } 
         },
         
