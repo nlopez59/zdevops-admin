@@ -1,0 +1,33 @@
+# IBM provided GitHub Actions prototype. Adapt this template for you env 
+
+name: zOS_DevOps_BCBS  
+env:    
+  zOS:       "<ibmuser@zos>" 
+  workDir:   '/tmp/zdevops/${{github.run_number}}_Build'   
+  
+  repoName:  '<zdevops>'                                     
+  myRepo:    <git@github.com>:${{github.repository}}.git        # example SSH formatted URL 
+  myBranch:  ${{ github.ref_name }}                        
+    
+on: [workflow_dispatch,push]
+
+jobs:
+  Build_Job:
+    
+    # Assume self host Windows Runner         
+    runs-on: 
+      - self-hosted   
+      - Windows                   
+    
+    timeout-minutes: 15
+
+    steps:      
+      - name: Init 
+        run: ssh ${{env.zOS}} '. /etc/profile; set; ls -t /tmp/zdevops | tail -n +3 | xargs -I{} rm -fr /tmp/zdevops/{}; mkdir -p ${{ env.workDir }}; df -P tmp'
+
+      - name: Clone 
+        run: ssh ${{env.zOS}} '. /etc/profile; pwd; git clone -b ${{env.myBranch}} ${{env.myRepo}} ${{env.workDir}}/${{env.repoName}}'
+                
+      - name: Build                 
+        run: ssh ${{env.zOS}} '. /etc/profile; cd  ${{env.workDir}}/${{env.repoName}}; pwd; dbb build impact --hlq ibmuser.zbuilder '
+            

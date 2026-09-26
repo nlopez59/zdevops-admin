@@ -1,0 +1,7 @@
+//IBMUSERA JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1)
+//*
+//POC     EXEC PGM=SAMPLE 
+//STEPLIB  DD  DISP=SHR,DSN=IBMUSER.VSCODE.LOAD
+//SYSOUT   DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//**********************************************************
