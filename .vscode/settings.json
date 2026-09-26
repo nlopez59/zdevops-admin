@@ -2,9 +2,9 @@
 
 {
     "zopeneditor.userbuild.userSettings": {
-        "dbbWorkspace": "<USS_HOME>/_vsCodeBuilds",
-        "dbbLogDir": "<USS_HOME>/_vsCodeBuilds",
-        "dbbHlq": "<MVS_HLQ>.VSCODE",
+        "dbbWorkspace": "/u/ibmuser/_vsCodeBuilds",
+        "dbbLogDir": "/u/ibmuser/_vsCodeBuilds",
+        "dbbHlq": "IBMUSER.VSCODE",
         "dbbDefaultZappProfile": "dbb-userbuild"
     },
 

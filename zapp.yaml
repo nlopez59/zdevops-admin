@@ -10,14 +10,12 @@ profiles:
 - name: "dbb-userbuild"
   type: "dbb"
   settings:    
-    command: "set ;  dbb   --verbose  build "
+    command: " dbb  build "
     lifecycle: "user"
     lifecycleArgs:
-    - "--hlq ${zopeneditor.userbuild.userSettings.dbbHlq}"
-    
+    - "--hlq ${zopeneditor.userbuild.userSettings.dbbHlq}"    
     additionalDependencies:
     - "dbb-app.yaml"
-
     logFilePatterns:
     - "**/logs/*.log"   
     

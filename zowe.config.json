@@ -1,10 +1,5 @@
 {
     "$schema": "./zowe.schema.json",
-    "Nelsons-Notes": [
-        "- Use this to connect to zOS from VS Code using the RSEAPI (STC) for user IBMUSER and your password",                
-        "- All ports and security have been pre-configured",
-        "- Just change the IP of the HOST to your TAZ/ODE Host IP"
-    ],
     "profiles": {
         "zos": {
             "type": "rse",
@@ -19,7 +14,7 @@
                 "protocol": "https",
                 "rejectUnauthorized": false,
                 "basePath": "rseapi",                                
-                "host": "<ZOS HOST IP or DNS>"
+                "host": "zos"
             },
             "secure": [
                 "user",
