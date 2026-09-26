@@ -4,7 +4,7 @@
         "zos": {
             "type": "rse",
             "properties": {
-                "port": <RSEAPI_PORT> 
+                "port": 8195 
             } 
         },
         
@@ -13,8 +13,10 @@
             "properties": {
                 "protocol": "https",
                 "rejectUnauthorized": false,
-                "basePath": "rseapi",                                
-                "host": "zos"
+                "basePath": "rseapi",
+
+                // your IBM Lab fyre zos VM  (see nelson for password and keys)
+                "host": "9.60.151.135"
             },
             "secure": [
                 "user",
