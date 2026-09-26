@@ -70,7 +70,7 @@ _On VS Code_:
         #  value: 
     ```
 
-Your ready to for your first test. 
+Your ready for your first test. 
 
 
 ## User Build Basics  
