@@ -1,4 +1,4 @@
-# IBM Z Developer for Z (IDZ): Configuration Management Best Practices 
+# **IBM Z Developer for Z (IDZ): Configuration Management Best Practices** 
 **IBM zLabConnect | Administration Best Practices | October 2026: Draft 1 in final review (external) 
 ** Authored: Nelson Lopez, Dina Al Jibori, Nicholas Almy  (IBM Forward Deploy Engineers)**
 
@@ -7,44 +7,43 @@ VS Code and IBM Bob provide a flexible development environment through IBM Z ext
 This document defines administrator roles, responsibilities, and best practices for enterprise z/OS environments. It guides administrators in standardizing, managing, and distributing approved configurations across developer workstations, shared infrastructure, and z/OS host environments to support consistent, secure, and reliable development workflows throughout the application lifecycle.
 
 **IBM's Configuration Strategy:** IBM Z development tools are designed to support a layered, flexible architecture that enables organizations to deliver consistent development experiences, simplify administration, and scale to meet evolving business and operational needs.
-
+<div style="display: flex; justify-content: center;">
 <img src="idz_v17.0.png" alt="Description" width="750">
+</div>
 
-
-## Quick Reference: Z Developer Extension and Configuration Files (Short list)
+## **Quick Reference: Z Developer Extension and Configuration Files (Summary)**
 
 | **Extension / Component** | **Configuration File or Resource** | **Capability**|
 | --- | --- | --- |
-| IBM DBB v3| `dbb-app.yaml` | DBB application build configuration.  |
-| DBB schema validation | DBB JSON schema files      | Validation and editing assistance for DBB YAML configuration. |
-| Git integration   | `.gitattributes`   | Git repository configuration encoding rules.  |
-| IBM Z Open Debug  | `.vscode/launch.json`      | list parked applications for debugging.|
-|   | `zowe-config.json` | has the zOpenDebug profile used for debugging and TAZ EDT.    |
-| IBM Z Open Editor | `zapp.yaml`| Language-aware source editing and application configuration.  |
-|   | `user settings.json`| for personal user setting like MVS HLQ and USS working directory      |
-| IBM TAZ/EDT| `zapp.yaml`| `Test` profile for TAZ unit testing.  |
-|   | `workspace or user settings`| EDT specific workspace or user settings.      |
-| Zowe Explorer     | `zowe-config.json` | Secure access to z/OS resources - data sets, USS files, jobs, and supported services. |
+| IBM DBB v3| `dbb-app.yaml` | Defines the DBB application build configuration. |
+| DBB schema validation | DBB JSON schema files      | Provides validation and editing assistance for DBB YAML configuration. |
+| Git integration   | `.gitattributes`   | Defines encoding and line-ending rules for the Git repository.  |
+| IBM Z Open Debug  | `.vscode/launch.json`      | Lists parked applications for debugging. |
+|   | `zowe-config.json` | Contains the zOpenDebug profile used for debugging and TAZ/EDT.    |
+| IBM Z Open Editor | `zapp.yaml`| Configures language-aware source editing and application configuration.  |
+|   | `settings.json` (User) | Stores personal user setting like MVS HLQ and USS working directory      |
+| IBM TAZ/EDT| `zapp.yaml`| Defines the `Test` profile for TAZ unit testing.  |
+|   | `settings.json` (Workspace or User) | Stores the EDT specific workspace or user settings.      |
+| Zowe Explorer     | `zowe-config.json` | Provides secure access to z/OS resources - data sets, USS files, jobs, and supported services. |
 
-**Note:** A configuration filename does not necessarily belong exclusively to one extension. Some files configure VS Code itself, while others are interpreted by a specific IBM tool. Always verify the supported file location, format, and scope for the installed version.
+**Note:** A configuration filename does not necessarily belong exclusively to one component. Some files configure VS Code itself, while others are interpreted by a specific IBM tool. Always verify the supported file location, format, and scope for the installed version.
 
 
-### IDz Feature Summary 
+### IDz Feature Summary
 
 Collectively, the IBM Developer for z/OS suite provides a comprehensive set of capabilities that help developers quickly understand existing applications, implement changes, and accelerate development.
-
+<div style="display: flex; justify-content: center;">
 <img src="features.png" alt="Description" width="450">
+</div>
 
----
 
-
-## Administration Roles and Responsibilities
+## **Administration Roles and Responsibilities**
 
 IBM Developer for z/OS (IDz) relies on coordinated administration across developer workstations, distributed infrastructure, enterprise DevOps services, and z/OS host environments. Each administrator manages a specific area of the platform and collaborates with other teams to provide a consistent, secure, and reliable development environment.
 
 
 | Role                                   | Primary Responsibilities                                                                                                                                   |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Enterprise / DevOps Administrator**  | Manages source control, work management, code quality, artifact repositories, SaaS services, AI services, and pipeline integrations.                       |
 | **Desktop Administrator**              | Installs and maintains VS Code, IBM Z extensions, approved developer tools, workstation settings, and access policies.                                     |
 | **IDz / z/OS Dev Tools Administrator** | Configures IBM Developer for z/OS, host development services, connectivity, and integrations for editing, building, testing, debugging, and code coverage. |
@@ -53,40 +52,45 @@ IBM Developer for z/OS (IDz) relies on coordinated administration across develop
  
 
 
-### Collaboration Across Administrators and Developers
+### **Collaboration Across Administrators and Developers**
 
-Effective collaboration between administrators and developers is essential to maintaining a consistent, secure, and reliable z/OS development environment. 
-
-Administrators with elevated privileges collaborate with developers to install, configure, validate, and maintain the development platform and its supporting services. Clearly defined responsibilities, standardized configurations, documented procedures, and coordinated change management promote consistent environments, simplify onboarding and troubleshooting, and ensure reliable platform operations in support of the software development lifecycle (SDLC).
+Effective collaboration between administrators and developers depends on clearly defined responsibilities, standardized configurations, documented procedures, and coordinated change management. These practices keep the z/OS development environment consistent and secure, simplify onboarding and troubleshooting, and support reliable operations throughout the software development lifecycle.
 
 This collaboration spans five key areas:
 
-1. **Install** — System programmers acquire and install supported software and PTFs. Infrastructure and desktop administrators provision the required environments and developer tools.
+1. **Install** — z/OS system programmers acquire and install supported software and PTFs. Infrastructure and desktop administrators provision the required environments and developer tools.
 
 2. **Configure** — DevOps administrators configure repositories, pipelines, and integrations. IDz and z/OS Dev Tools administrators configure developer tools, host services, connectivity, and development workflows. System administrators provide the necessary subsystem and security configurations.
 
-3. **Validate** — Administrators and developers verify workstation setup, authentication, network connectivity, source access, builds, testing, debugging, code coverage, and deployment workflows.
+3. **Validate** — Desktop administrators and IDz / z/OS Dev Tools administrators verify workstation setup, authentication, and network connectivity with developers. DevOps administrators verify source access, builds, and deployment workflows. IDz and z/OS Dev Tools administrators verify testing, debugging, and code coverage.
 
-4. **Support and maintain** — Administrators coordinate troubleshooting, manage software updates and configuration changes, monitor shared services, and resolve issues across workstation, distributed, and z/OS environments.
+4. **Support and maintain** — Each administrator maintains their own area. Desktop administrators handle tool updates. IDz and z/OS Dev Tools administrators handle host services and configuration changes. DevOps administrators monitor shared services. System administrators and system programmers resolve subsystem and z/OS issues. 
 
-5. **Enable continuous improvement** — Developer feedback, operational experience, and pipeline results drive configuration updates, tool upgrades, process improvements, and standardized development practices.
+5. **Enable continuous improvement** — Developers provide feedback. IDz and z/OS Dev Tools administrators and DevOps administrators use it, together with operational experience and pipeline results, to drive configuration updates, tool upgrades, and standardized practices.
 
-### Objective
+### **Objective**
 
 The goal is to establish a **standardized, secure, and well-managed IBM Developer for z/OS environment** that reduces onboarding effort, simplifies maintenance and troubleshooting, and enables development teams to use consistent workflows from source changes through build, test, and deployment.
 
 ---
 
-## Desktop and z/OS Configuration Overview
+## **Desktop and z/OS Configuration Overview**
 
-On the desktop, VS Code and IBM Z extensions use configuration files in a hierarchical structure to define personal preferences, application settings, and organization-wide standards. Administrators should understand the purpose of each level and use it to establish consistent, maintainable development environments.
+On the desktop, VS Code and IBM Z extensions use configuration files at several levels to define organization-wide standards, application settings, and personal preferences. Administrators should understand the purpose of each level and use it to establish consistent, maintainable development environments.
+
+<div style="display: flex; justify-content: center;">
+<img src="config-levels.svg" alt="Configuration levels: Shared, Workspace, User, and z/OS host" width="700">
+</div>
+
 
 | **Level**   | **Purpose** |**Example** |
 | --- | --- | --- |
 | **Shared Configuration** | Centrally store and distribute approved configuration files for team use.     | Shared DBB schema files or Zowe CLI configuration|
-| **Workspace Settings**   | `./.vscode/settings.json` - Define settings specific to an application or project and share them through source control.  | Project-specific build settings and extension.  Note: For applications that include source from 2 or more repos,  a **Multi-root** workspaces would be designed to manged cross repo local builds.   
+| **Workspace Settings**   | `./.vscode/settings.json` - Define settings specific to an application or project and share them through source control.  | Project-specific build and extension settings. |   
 | **User Settings**| `%USERPROFILE%/.../settings.json` - Define personal settings that apply across a developer's workspaces.  | Editor preferences and personal options  |
-| **z/OS Host Configuration**  | __Non-VS Code settings__ - Configure host endpoints, connections, services, and resources required by development tools. | Z system administrators and desktop administrators collaborate to design a consistent, secure, and reliable environment. For example, certain TAZ/EDT variables can be defined globally in central `/etc/profile`. | 
+| **z/OS Host Configuration**  | __Non-VS Code settings__ - Configure host endpoints, connections, services, and resources required by development tools. | Globally define certain TAZ/EDT variables in central `/etc/profile`. | 
+
+<div style="page-break-after: always;"></div>
 
 
 **Best practice:**
@@ -97,7 +101,7 @@ On the desktop, VS Code and IBM Z extensions use configuration files in a hierar
 
 Example Comments — VS Code `settings.json`:
 
-  ```
+  ```jsonc
   {
       // Use the approved z/OS development profile.
       "zopeneditor.zowe": {
@@ -108,7 +112,7 @@ Example Comments — VS Code `settings.json`:
 
 Example — YAML:
 
-  ```
+  ```yaml
   # DBB build environment configuration
   # Use the approved data set HLQ.
   dbb:
@@ -122,16 +126,16 @@ Example — YAML:
 **References:** [VS Code — User and Workspace Settings](https://code.visualstudio.com/docs/configure/settings) · [VS Code — Enterprise Policies](https://code.visualstudio.com/docs/enterprise/policies)
 
 
-### Example: Zowe Configuration
+### **Example: Zowe Configuration**
 A Zowe configuration contains many profiles that define specific connection settings for z/OS host services. 
 
-For example, an [IBM Z Open Debug](https://www.ibm.com/docs/en/developer-for-zos/17.0.x?utm_source=chatgpt.com) profile defines the Remote Debug Service (RDS/EQARMTD) and Debug Profile Service (DPS/EQAPROF) endpoints for a specific LPAR. Depending on the configuration, connectivity may also rely on approved security controls, such as TLS certificates and MFA, and supporting z/OS services and APIs, such as RSE API and z/OSMF.
+For example, an [IBM Z Open Debug](https://www.ibm.com/docs/en/developer-for-zos/17.0.x?topic=code-setting-up-z-open-debug) profile defines the Remote Debug Service (RDS/EQARMTD) and Debug Profile Service (DPS/EQAPROF) endpoints for a specific LPAR. Depending on the configuration, connectivity may also rely on approved security controls, such as TLS certificates and MFA, and supporting z/OS services and APIs, such as RSE API and z/OSMF.
 
 Host services may also communicate with other host components to fulfill client requests. These interactions require appropriate host-side configuration, including network connectivity, port definitions, and security settings. For example, z/OS administrators configure the required connectivity and security to allow the debugger to access the Headless Code Coverage service (EQAHCC).
 
 ---
 
-## Which Configurations Can Be Centrally Managed?
+## **Which Configurations Can Be Centrally Managed?**
 
 In IBM Z development environment (V17.0.x), the following configurations are recommended for centralized management where supported:
 
@@ -150,7 +154,7 @@ In IBM Z development environment (V17.0.x), the following configurations are rec
   ```
 
 
-## Workspace Settings (Application or Team Settings)
+## **Workspace Settings (Application or Team Settings)**
 
 A VS Code workspace configuration allows a team to share project-specific settings to support a consistent development environment.
 
@@ -184,7 +188,7 @@ References:
 
 ---
 
-## Zowe Profiles and z/OS Connectivity
+## **Zowe Profiles and z/OS Connectivity**
 
 Zowe provides connection configuration used by Zowe Explorer and several other IBM extensions to securely access z/OS services.
 Reference: [Interacting with z/OS using Zowe](https://www.ibm.com/docs/en/developer-for-zos/17.0.x?topic=code-interacting-zos-using-zowe)
@@ -194,12 +198,12 @@ A Zowe profile can define information such as:
 - The z/OS Hostname and port endpoint.
 - Authentication method and user identity.
 - Service-specific connection options.
-- And other extension specif settings.
+- And other extension specific settings.
 
 Depending on the tool and its configuration, profiles provide secure access to z/OS resources, such as browsing and editing data sets, accessing USS files, and submitting jobs and viewing their output. They also enable connectivity to a wide range of z/OS services, including DBB, TAZ/EDT, the Debugger, and more.
 
 
-### Shared Zowe profiles
+### **Shared Zowe profiles**
 
 Instead of maintaining a separate copy for every developer, an organization can place the file in the application workspace/repo as a [team configuration file](https://docs.zowe.org/v3.5.x/user-guide/cli-using-using-team-profiles/?utm_source=chatgpt.com).
 
@@ -214,14 +218,14 @@ Reference: [Configuring Zowe CLI environment variables](https://docs.zowe.org/v3
 
 ---
 
-## TAZ Early Development Testing (EDT V3)
+## **TAZ Early Development Testing (EDT V3)**
 
 EDT V3 requires client configuration along with the necessary services, licensing, and permissions on z/OS.\
 Reference: [Installing-configuring-early-development-testing](https://www.ibm.com/docs/en/test-accelerator-for-z/3.x?topic=z-installing-configuring-early-development-testing)
 
 
 
-### Client-side configuration
+### **Client-side configuration**
 In addition to providing a UI for managing and rerunning test cases, the EDT extension integrates with IBM Z Open Debug and the backend Code Coverage service to deliver a seamless developer experience for testing, debugging, and code coverage analysis.
 
 - **Zowe configuration (`zowe.config.json`)** — Defines connection endpoints to z/OS using the zOpenDebug profile.
@@ -231,7 +235,7 @@ In addition to providing a UI for managing and rerunning test cases, the EDT ext
 - **IBM Bob Settings** – Review settings and best practices for using Bob with EDT, including the [troubleshooting guidance](https://www.ibm.com/docs/en/test-accelerator-for-z/3.x?topic=testing-enabling-early-development-tools-in-bob#t_bob_validate_connectivity__troubleshooting).
 
 
-### Debug Host Config Summary Under TAZ/EDT
+### **Debug Host Config Summary Under TAZ/EDT**
 The following highlights the debugger-related configuration files managed by a z/OS systems administrator.
 
 <img src="dbg_env.png" alt="Description" width="250">
@@ -250,7 +254,7 @@ Always consult the documentation that matches your installed versions before con
 ---
 
 
-## Recommended Administration and Rollout Process
+## **Recommended Administration and Rollout Process**
 
 Use the following process when installing an extension pack or introducing an individual component.
 
@@ -267,7 +271,7 @@ Use the following process when installing an extension pack or introducing an in
 
 ---
 
-## Final Recommendations and Best Practices
+## **Final Recommendations and Best Practices**
 
 - Security: Never store credentials or secrets in Git. Use approved authentication methods and secret management. Zowe profiles do not replace RACF permissions or host-side security.
 - Extension security: Install only approved extensions from trusted sources. Use allowlists or centrally managed installation policies.
@@ -280,7 +284,7 @@ Use the following process when installing an extension pack or introducing an in
 - Developer support: Train developers to use and troubleshoot approved configurations.
 
 
-### Recommended Setup and Validation
+### **Recommended Setup and Validation**
 
 - Follow each IBM extension's configuration requirements.
 - Configure Zowe profiles and approved host authentication methods.

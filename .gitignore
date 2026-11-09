@@ -1,2 +1,4 @@
 # Items not to pushed to Git Server like anything in the logs folder  
 logs/*
+docs/_V5_abridged_zDev Client and Host Admin Tips.pdf
+.DS_Store
