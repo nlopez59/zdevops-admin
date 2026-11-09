@@ -135,25 +135,6 @@ Host services may also communicate with other host components to fulfill client 
 
 ---
 
-## **Which Configurations Can Be Centrally Managed?**
-
-In IBM Z development environment (V17.0.x), the following configurations are recommended for centralized management where supported:
-
-- **Zowe configuration (`zowe.config.json`)** — Defines z/OS connection profiles and related settings  (see below)
-
-- **DBB v3 zBuilder schema configuration** — Defines the schema information used by DBB tooling.\
-  Reference: Schema [https://www.ibm.com/docs/en/adffz/dbb/3.0.x?topic=ide-configuring-schema-validation-vs-code](https://www.ibm.com/docs/en/adffz/dbb/3.0.x?topic=ide-configuring-schema-validation-vs-code)\
-  Example *workspace* setting referencing a shared DBB schema configuration file:
-  ```
-      {
-        "yaml.schemas": {
-            "file://server/share/dbb/applicationConfigurationSchema.json": [ ... ],
-            "file://server/share/dbb/buildConfigurationSchema.json": [ ... ]
-        }
-      }
-  ```
-
-
 ## **Workspace Settings (Application or Team Settings)**
 
 A VS Code workspace configuration allows a team to share project-specific settings to support a consistent development environment.
@@ -185,6 +166,27 @@ References:
 - [TAZ EDT - Getting Started](https://www.ibm.com/docs/en/test-accelerator-for-z/3.x?topic=SSLGKGY_3.x/topics/early_development_testing_fresh.htm)
 - [Bob IDE](https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index)
 - [IBM Bob Premium Package for Z](https://www.ibm.com/docs/en/bobz/3.x?topic=overview-discover-whats-inside-bob-premium-package-z)
+
+---
+
+## **Which Configurations Can Be Centrally Managed?**
+
+In IBM Z development environment (V17.0.x), the following configurations are recommended for centralized management where supported:
+
+- **Zowe configuration (`zowe.config.json`)** — Defines z/OS connection profiles and related settings  (see Zowe Profiles and z/OS Connectivity section below)
+
+- **DBB v3 zBuilder schema configuration** — Defines the schema information used by DBB tooling. Visual Studio Code workspace settings can reference centrally managed DBB schema files to enable YAML validation and editor assistance across users and projects.\
+  Reference: Schema [https://www.ibm.com/docs/en/adffz/dbb/3.0.x?topic=ide-configuring-schema-validation-vs-code](https://www.ibm.com/docs/en/adffz/dbb/3.0.x?topic=ide-configuring-schema-validation-vs-code)\
+  Reference: Visual Studio Code Settings: [https://code.visualstudio.com/docs/configure/settings](https://code.visualstudio.com/docs/configure/settings)\
+  Example *workspace* setting referencing a shared DBB schema configuration file:
+  ```
+      {
+        "yaml.schemas": {
+            "file://server/share/dbb/applicationConfigurationSchema.json": [ ... ],
+            "file://server/share/dbb/buildConfigurationSchema.json": [ ... ]
+        }
+      }
+  ```
 
 ---
 
