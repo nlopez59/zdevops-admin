@@ -7,7 +7,7 @@ VS Code and IBM Bob provide a flexible development environment through IBM Z ext
 This document defines administrator roles, responsibilities, and best practices for enterprise z/OS environments. It guides administrators in standardizing, managing, and distributing approved configurations across developer workstations, shared infrastructure, and z/OS host environments to support consistent, secure, and reliable development workflows throughout the application lifecycle.
 
 **IBM's Configuration Strategy:** IBM Z development tools are designed to support a layered, flexible architecture that enables organizations to deliver consistent development experiences, simplify administration, and scale to meet evolving business and operational needs.
-<div style="display: flex; justify-content: center;">
+<div style="display: flex; justify-content: center; margin-top: 80px;page-break-after: always;">
 <img src="idz_v17.0.png" alt="Description" width="750">
 </div>
 
@@ -26,13 +26,16 @@ This document defines administrator roles, responsibilities, and best practices 
 |   | `settings.json` (Workspace or User) | Stores the EDT specific workspace or user settings.      |
 | Zowe Explorer     | `zowe-config.json` | Provides secure access to z/OS resources - data sets, USS files, jobs, and supported services. |
 
-**Note:** A configuration filename does not necessarily belong exclusively to one component. Some files configure VS Code itself, while others are interpreted by a specific IBM tool. Always verify the supported file location, format, and scope for the installed version.
+>Note: A configuration filename does not necessarily belong exclusively to one component. Some files configure VS Code itself, while others are interpreted by a specific IBM tool. Always verify the supported file location, format, and scope for the installed version.
 
+<div style="page-break-after: always;"></div>
 
-### IDz Feature Summary
+### **IDz Feature Summary**
 
 Collectively, the IBM Developer for z/OS suite provides a comprehensive set of capabilities that help developers quickly understand existing applications, implement changes, and accelerate development.
-<div style="display: flex; justify-content: center;">
+
+
+<div style="display: flex; justify-content: center; margin-top: 60px; margin-bottom: 60px;">
 <img src="features.png" alt="Description" width="450">
 </div>
 
@@ -41,6 +44,7 @@ Collectively, the IBM Developer for z/OS suite provides a comprehensive set of c
 
 IBM Developer for z/OS (IDz) relies on coordinated administration across developer workstations, distributed infrastructure, enterprise DevOps services, and z/OS host environments. Each administrator manages a specific area of the platform and collaborates with other teams to provide a consistent, secure, and reliable development environment.
 
+<div style="margin-top: 20px;"></div>
 
 | Role                                   | Primary Responsibilities                                                                                                                                   |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -50,6 +54,7 @@ IBM Developer for z/OS (IDz) relies on coordinated administration across develop
 | **System Administrator**               | Manages z/OS subsystems and services, including CICS, Db2, RACF, networking, and related operational requirements.                                         |
 | **z/OS System Programmer**             | Installs and maintains IBM and third-party software using SMP/E, applies PTFs, and manages system libraries, configuration, and LPARs.                     |
  
+<div style="page-break-after: always;"></div>
 
 
 ### **Collaboration Across Administrators and Developers**
@@ -90,7 +95,6 @@ On the desktop, VS Code and IBM Z extensions use configuration files at several 
 | **User Settings**| `%USERPROFILE%/.../settings.json` - Define personal settings that apply across a developer's workspaces.  | Editor preferences and personal options  |
 | **z/OS Host Configuration**  | __Non-VS Code settings__ - Configure host endpoints, connections, services, and resources required by development tools. | Globally define certain TAZ/EDT variables in central `/etc/profile`. | 
 
-<div style="page-break-after: always;"></div>
 
 
 **Best practice:**
@@ -98,6 +102,8 @@ On the desktop, VS Code and IBM Z extensions use configuration files at several 
 - Manage host-side configuration separately, according to each product’s requirements.
 - Maintain centrally shared and workspace configuration files as reference templates to standardize and simplify organizational rollout.
 - Use comments to explain configuration settings, document organizational standards, and identify values that require customization. YAML supports `#` comments, while VS Code `settings.json` supports `//` and `/* ... */` comments.
+
+<div style="page-break-after: always;"></div>
 
 Example Comments — VS Code `settings.json`:
 
@@ -179,7 +185,7 @@ In IBM Z development environment (V17.0.x), the following configurations are rec
   Reference: Schema [https://www.ibm.com/docs/en/adffz/dbb/3.0.x?topic=ide-configuring-schema-validation-vs-code](https://www.ibm.com/docs/en/adffz/dbb/3.0.x?topic=ide-configuring-schema-validation-vs-code)\
   Reference: Visual Studio Code Settings: [https://code.visualstudio.com/docs/configure/settings](https://code.visualstudio.com/docs/configure/settings)\
   Example *workspace* setting referencing a shared DBB schema configuration file:
-  ```
+  ```json
       {
         "yaml.schemas": {
             "file://server/share/dbb/applicationConfigurationSchema.json": [ ... ],
@@ -239,8 +245,9 @@ In addition to providing a UI for managing and rerunning test cases, the EDT ext
 
 ### **Debug Host Config Summary Under TAZ/EDT**
 The following highlights the debugger-related configuration files managed by a z/OS systems administrator.
-
+<div style="display: flex; justify-content: center;">
 <img src="dbg_env.png" alt="Description" width="250">
+</div>
 
 **Administration guidance:**
 Review the [TAZ configuration guide](https://www.ibm.com/docs/en/test-accelerator-for-z/3.x?topic=testing-configuring-early-development-extension-settings) to identify settings that can be moved from individual workspaces to centralized host environment variables. This reduces configuration duplication and maintenance overhead across development teams.
@@ -271,7 +278,9 @@ Use the following process when installing an extension pack or introducing an in
 9. **Apply regular software upgrades**, review the latest documentation, and verify backward compatibility before rollout.
 10. Follow **standard capacity planning** practices to monitor and optimize CPU, memory, network, and disk utilization across client systems and remote hosts.
 
----
+
+
+<div style="page-break-after: always;"></div>
 
 ## **Final Recommendations and Best Practices**
 
