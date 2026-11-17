@@ -1,2 +1,3 @@
 # Items not to pushed to Git Server like anything in the logs folder  
 logs/*
+.DS_Store
